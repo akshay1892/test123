@@ -1,1 +1,1 @@
-python test.py
+python validate.py
