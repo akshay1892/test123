@@ -95,7 +95,7 @@ def addTargetVariable(df):
 
 import seaborn as sns
 import matplotlib.pyplot as plt
-get_ipython().magic('matplotlib inline')
+#get_ipython().magic('matplotlib inline')
 
 #plotly function adddedd
 def viewColumnBreakup(oneDf): 
