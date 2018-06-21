@@ -9,7 +9,7 @@ Created on Wed Jun 20 15:18:29 2018
 
 
 # All Imports to the files
-import matplotlib.pyplot as plt
+
 from itertools import cycle
 from sklearn import svm, datasets
 from sklearn.metrics import roc_curve, auc
