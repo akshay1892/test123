@@ -108,19 +108,18 @@ class Test:
         print('Accuracy : ',accuracy_score(Validate_Target, Test_pred2)*100,'%')
         import sys
         if accuracy_score_calc > 95:
-#            print('Overfitting! Accuracy more than 95%')
+            print('Overfitting! Accuracy more than 95%')
             sys.exit(-1)
         elif accuracy_score_calc < 85:
             print('Underfitting! Accuracy less than 85%')
-#            sys.exit(-1)
+            sys.exit(-1)
         
 
 
-def main():
-    training_model = Train()
-    training_model.train_model()       
-    
-    
-    validate_model = Test()
-    validate_model.test_model()
+training_model = Train()
+training_model.train_model()       
+        
+        
+validate_model = Test()
+validate_model.test_model()
         
