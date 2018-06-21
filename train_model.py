@@ -5,37 +5,24 @@ Created on Thu Jun 21 10:50:05 2018
 @author: Administrator
 """
 
-# This is our function file being imported
-import utils2 as myUtil
 # All Imports to the files
-import matplotlib.pyplot as plt
-from itertools import cycle
-from sklearn import svm, datasets
-from sklearn.metrics import roc_curve, auc
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-import plotly
-import plotly.graph_objs as go
-from plotly import tools
-
-from sklearn.preprocessing import label_binarize
-from sklearn.multiclass import OneVsRestClassifier
-from sklearn.metrics import roc_curve
 from sklearn.metrics import accuracy_score
-from sklearn.metrics import confusion_matrix
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import GradientBoostingClassifier
-from scipy import interp
-import numpy as np
-import seaborn as sns
 import pandas as pd
 import pickle
+import datetime
+import time
+# This is our function file being imported
+import utils2 as myUtil
 
 
 
-Train1 =  pd.read_csv('02-train-engg.csv',sep = ',',encoding='latin-1')
+training_dataset = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/train/02-train-engg.csv'
+test_dataset_url = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/test/02-test-engg.csv'
+
+Train1 =  pd.read_csv(training_dataset,sep = ',',encoding='latin-1')
 Train1 = Train1.drop(['data_uid','States','Unnamed: 0','Date','Zipcode'],axis=1)
-Test1 =  pd.read_csv('02-test-engg.csv',sep = ',',encoding='latin-1')
+Test1 =  pd.read_csv(test_dataset_url,sep = ',',encoding='latin-1')
 Test1 = Test1.drop(['data_uid','States','Unnamed: 0','Date','Zipcode'],axis=1)
 #Validate1 =  pd.read_csv('02-validate-engg.csv',sep = ',',encoding='latin-1')
 #Validate1 = Validate1.drop(['data_uid','States','Unnamed: 0','Date','Zipcode'],axis=1)
@@ -58,8 +45,13 @@ lg = LogisticRegression(random_state=1)
 lg.fit(Train_Features,Train_Target)
 
 
+# Timestamp
+ts = time.time()
+st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d')
+
 # Prepare the pickle file.
-filenameLogReg = 'Logistic_model.pkl'
+
+filenameLogReg = 'Logistic_model_'+ st +'.pkl'
 pickle.dump(lg, open(filenameLogReg, 'wb'))
 # loading the pickled model from disk 
 loaded_model = pickle.load(open(filenameLogReg, 'rb'))

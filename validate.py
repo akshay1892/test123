@@ -4,40 +4,20 @@ Created on Wed Jun 20 15:18:29 2018
 
 @author: Administrator
 """
-
-
-
-
 # All Imports to the files
-
-from itertools import cycle
-from sklearn import svm, datasets
-from sklearn.metrics import roc_curve, auc
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-import plotly
-import plotly.graph_objs as go
-from plotly import tools
-
-from sklearn.preprocessing import label_binarize
-from sklearn.multiclass import OneVsRestClassifier
-from sklearn.metrics import roc_curve
 from sklearn.metrics import accuracy_score
-from sklearn.metrics import confusion_matrix
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import GradientBoostingClassifier
-from scipy import interp
-import numpy as np
-import seaborn as sns
 import pandas as pd
 import pickle
 # This is our function file being imported
 import utils2 as myUtil
 
 
-Test1 =  pd.read_csv('02-test-engg.csv',sep = ',',encoding='latin-1')
+validate_dataset_url = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/validate/02-validate-engg.csv'
+test_dataset_url = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/test/02-test-engg.csv'
+
+Test1 =  pd.read_csv(test_dataset_url,sep = ',',encoding='latin-1')
 Test1 = Test1.drop(['data_uid','States','Unnamed: 0','Date','Zipcode'],axis=1)
-Validate1 =  pd.read_csv('02-validate-engg.csv',sep = ',',encoding='latin-1')
+Validate1 =  pd.read_csv(validate_dataset_url, sep = ',',encoding='latin-1')
 Validate1 = Validate1.drop(['data_uid','States','Unnamed: 0','Date','Zipcode'],axis=1)
 
 
