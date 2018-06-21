@@ -17,10 +17,11 @@ import utils2 as myUtil
 
 class Train:
     
-    training_dataset = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/train/02-train-engg.csv'
-    test_dataset_url = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/test/02-test-engg.csv'
     
     def train_model(self):
+        training_dataset = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/train/02-train-engg.csv'
+        test_dataset_url = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/test/02-test-engg.csv'
+    
         
         Train1 =  pd.read_csv(training_dataset,sep = ',',encoding='latin-1')
         Train1 = Train1.drop(['data_uid','States','Unnamed: 0','Date','Zipcode'],axis=1)
@@ -70,11 +71,13 @@ class Train:
         
 class Test:
     
-    validate_dataset_url = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/validate/02-validate-engg.csv'
-    test_dataset_url = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/test/02-test-engg.csv'
-
+    
     
     def test_model(self):
+
+        validate_dataset_url = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/validate/02-validate-engg.csv'
+        test_dataset_url = 'https://s3.ap-south-1.amazonaws.com/ci-ml-credit-risk/Credit+Risk/dataset/test/02-test-engg.csv'
+
         
         Test1 =  pd.read_csv(test_dataset_url,sep = ',',encoding='latin-1')
         Test1 = Test1.drop(['data_uid','States','Unnamed: 0','Date','Zipcode'],axis=1)
