@@ -27,8 +27,7 @@ class Train:
         Train1 = Train1.drop(['data_uid','States','Unnamed: 0','Date','Zipcode'],axis=1)
         Test1 =  pd.read_csv(test_dataset_url,sep = ',',encoding='latin-1')
         Test1 = Test1.drop(['data_uid','States','Unnamed: 0','Date','Zipcode'],axis=1)
-        #Validate1 =  pd.read_csv('02-validate-engg.csv',sep = ',',encoding='latin-1')
-        #Validate1 = Validate1.drop(['data_uid','States','Unnamed: 0','Date','Zipcode'],axis=1)
+       
         
         
         # Creating Training and Test Features & Training and Test Target variables for modeling purpose
@@ -88,18 +87,17 @@ class Test:
         
         Test_Features = Test1.loc[:, Test1.columns != 'default']
         Test_Target = Test1['default']
-        #Test_Features = Test_Features.drop(['Unnamed: 0'],axis=1)
+        
         Validate_Features = Validate1.loc[:, Validate1.columns != 'default']
         Validate_Target = Validate1['default']
-        #Validate_Features = Validate_Features.drop(['Unnamed: 0'],axis=1)
+      
         
         
         
         
         
         # loading the pickled model from disk
-        #filenameGBM = 'model/Logistic_model.pkl
-        filenameGBM = 'model/GBM_model.pkl'
+        filenameGBM = 'model/Logistic_model.pkl'
         loaded_model2 = pickle.load(open(filenameGBM, 'rb'))
         #Predictions
         preds2 = loaded_model2.predict_proba(Validate_Features)[:,1]
