@@ -97,8 +97,9 @@ class Test:
         
         
         
-        # loading the pickled model from disk 
-        filenameGBM = 'model/Logistic_model.pkl'
+        # loading the pickled model from disk
+        #filenameGBM = 'model/Logistic_model.pkl
+        filenameGBM = 'model/GBM_model.pkl'
         loaded_model2 = pickle.load(open(filenameGBM, 'rb'))
         #Predictions
         preds2 = loaded_model2.predict_proba(Validate_Features)[:,1]
